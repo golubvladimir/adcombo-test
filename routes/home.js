@@ -6,7 +6,7 @@ router.get('/', (req, res) => {
 
     res.render('index', {
         title: 'Главная страница',
-        ip: req.ip,
+        ip: req.headers['x-real-ip'] || req.headers['x-forwarded-for'] || req.ip,
         isHome: true
     })
 });
